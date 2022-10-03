@@ -2,6 +2,8 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,3 +18,15 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+$router->group(['prefix'=>'api'], function () use ($router) {
+    $router->get('Posts','TestController@get_post_data');
+    $router->get('Store','TestController@store_data');
+});
+
+$router->get('test_data','',[TestController::class,'get_post_data']);
+
+// $router->get('profile', [
+//     'as' => 'profile', 'uses' => 'TestController@get_post_data'
+// ]);
