@@ -10,7 +10,7 @@ class TestController extends Controller
 {
     public function get_post_data(){
         $new_data=PostModel::all();
-       // $new_data= array_values($new_data->toArray());
+        $new_data= array_values($new_data->toArray());
        // return $new_data;
         //return PostModel::all();
         return response()->json(
