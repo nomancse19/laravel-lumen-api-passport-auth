@@ -22,26 +22,25 @@ class TestController extends Controller
     }
 
 
-    public function store_data(){
+    public function store_data(Request $request){
         try{
-            $data=100;
-            if($data==50){
-                return response()->json(
-                    [   'status'=>true,
-                        'message' => 'Data Not Found',
-                        'data' => $data,
-                        'status_code' => 200,
-                    ]);
-            }else{
-                throw new Exception("Value must be 1 or below");
-            }
-        }catch(\Exception $e){
-            return response()->json(
-                [   'status'=>false,
-                    'message' => 'Data Not Found',
-                    'data' => $e->getMessage(),
+            $post= new PostModel();
+            $post->post_title=$request->post_title;
+            $post->post_body=$request->post_body;
+            if($post->save()){
+                return response()->json([
+                    'status'=>true,
+                    'message' => 'Data Added Suucessfully',
+                    //'data' => $new_data,
                     'status_code' => 200,
                 ]);
+            }
+
+        }catch(Exception $e){
+            return response()->json([
+                'status'=>false,
+                'message' => $e->getMessage(),
+            ]);
         }
     }
 

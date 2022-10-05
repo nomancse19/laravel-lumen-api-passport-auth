@@ -22,7 +22,7 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix'=>'api'], function () use ($router) {
     $router->get('Posts','TestController@get_post_data');
-    $router->get('Store','TestController@store_data');
+    $router->post('Store','TestController@store_data');
 });
 
 $router->get('test_data','',[TestController::class,'get_post_data']);

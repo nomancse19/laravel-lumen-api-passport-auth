@@ -6,6 +6,7 @@ require_once __DIR__.'/../vendor/autoload.php';
     dirname(__DIR__)
 ))->bootstrap();
 
+
 date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
 
 /*
@@ -18,10 +19,10 @@ date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
 | application as an "IoC" container and router for this framework.
 |
 */
-
-$app = new Laravel\Lumen\Application(
+$app = new \Dusterio\LumenPassport\Lumen7Application(
     dirname(__DIR__)
 );
+//\Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
 
  $app->withFacades();
 
